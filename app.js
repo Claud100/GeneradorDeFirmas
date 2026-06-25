@@ -1029,11 +1029,18 @@ function generateSignatureHtml() {
     
     let html = `<table cellpadding="0" cellspacing="0" style="font-family: 'Barlow', Arial, sans-serif; border-collapse: collapse; text-align: left; width: 1024px; max-width: 100%;">\n`;
     
+    // Fila 1: Banner de Imagen
+    html += `  <tr>\n`;
+    html += `    <td style="padding: 0; margin: 0; border: 0; line-height: 0;">\n`;
+    html += `      <img src="${bannerSrc}" width="1024" height="265" style="display: block; width: 1024px; height: auto; max-width: 100%; border: 0;" alt="${name} - Century 21"/>\n`;
+    html += `    </td>\n`;
+    html += `  </tr>\n`;
+
+    // Fila 2: Iconos de Redes Sociales (Abajo a la Izquierda)
     const activeSocials = Object.entries(state.socials).filter(([net, url]) => url.trim() !== '');
-    
     if (activeSocials.length > 0) {
         html += `  <tr>\n`;
-        html += `    <td style="padding: 0 0 10px 0; margin: 0; border: 0; text-align: right;">\n`;
+        html += `    <td style="padding: 10px 0 0 0; margin: 0; border: 0; text-align: left;">\n`;
         html += `      <table cellpadding="0" cellspacing="0" style="display: inline-block; border-collapse: collapse;">\n`;
         html += `        <tr>\n`;
         
@@ -1044,7 +1051,7 @@ function generateSignatureHtml() {
             }
             const iconUrl = hostedSocialUrls[net] || new URL(customSocialPaths[net], window.location.href).href;
             
-            html += `          <td style="padding-left: 10px; border: 0; vertical-align: middle;">\n`;
+            html += `          <td style="padding-right: 10px; border: 0; vertical-align: middle;">\n`;
             html += `            <a href="${finalUrl}" target="_blank" style="text-decoration: none; display: block; border: 0;">\n`;
             html += `              <img src="${iconUrl}" width="32" height="32" style="display: block; width: 32px; height: 32px; border: 0;" alt="${net}"/>\n`;
             html += `            </a>\n`;
@@ -1056,12 +1063,6 @@ function generateSignatureHtml() {
         html += `    </td>\n`;
         html += `  </tr>\n`;
     }
-    
-    html += `  <tr>\n`;
-    html += `    <td style="padding: 0; margin: 0; border: 0; line-height: 0;">\n`;
-    html += `      <img src="${bannerSrc}" width="1024" height="265" style="display: block; width: 1024px; height: auto; max-width: 100%; border: 0;" alt="${name} - Century 21"/>\n`;
-    html += `    </td>\n`;
-    html += `  </tr>\n`;
     
     html += `</table>`;
     return html;
