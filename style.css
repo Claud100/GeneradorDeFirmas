@@ -707,10 +707,10 @@ input[type="range"]::-webkit-slider-thumb:hover {
 /* Iconos sociales en la previsualización del portapapeles */
 .social-icons-preview {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 10px;
-    margin-bottom: 10px;
-    margin-top: 0;
+    margin-bottom: 0;
+    margin-top: 10px;
     padding-right: 0;
     padding-left: 0;
 }
