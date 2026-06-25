@@ -1101,23 +1101,25 @@ function updateSignatureHtml() {
     }
 }
 
-// Auxiliar: Sube una imagen base64 a Imgur de forma anónima
 async function uploadToImgur(base64Image) {
     const cleanBase64 = base64Image.replace(/^data:image\/png;base64,/, "");
-    const formData = new FormData();
-    formData.append('image', cleanBase64);
+    const params = new URLSearchParams();
+    params.append('image', cleanBase64);
     
     try {
         const response = await fetch('https://api.imgur.com/3/image', {
             method: 'POST',
             headers: {
-                Authorization: 'Client-ID 546c25a59c58ad7'
+                'Authorization': 'Client-ID 546c25a59c58ad7',
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: formData
+            body: params
         });
         const data = await response.json();
         if (data.success) {
             return data.data.link;
+        } else {
+            console.error("Imgur upload error response:", data);
         }
     } catch (e) {
         console.error("Imgur upload failed:", e);
