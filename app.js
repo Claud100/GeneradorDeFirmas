@@ -753,7 +753,7 @@ async function renderCanvas(targetCanvas, scale = 1) {
 
             if (hasCargo2) {
                 const cargo2Y = 112 * scale;
-                targetCtx.font = `500 ${18 * scale}px Barlow`;
+                targetCtx.font = `700 ${18 * scale}px Barlow`;
                 targetCtx.fillText(state.agent.cargo2.toUpperCase(), startX, cargo2Y);
             }
 
@@ -780,7 +780,7 @@ async function renderCanvas(targetCanvas, scale = 1) {
 
             if (hasCargo2) {
                 const cargo2Y = 152 * scale;
-                targetCtx.font = `500 ${20 * scale}px Barlow`;
+                targetCtx.font = `700 ${20 * scale}px Barlow`;
                 targetCtx.fillText(state.agent.cargo2.toUpperCase(), startX, cargo2Y);
             }
 
@@ -810,7 +810,7 @@ async function renderCanvas(targetCanvas, scale = 1) {
 
         if (hasCargo2) {
             const cargo2Y = 118 * scale;
-            targetCtx.font = `500 ${18 * scale}px Barlow`;
+            targetCtx.font = `700 ${18 * scale}px Barlow`;
             targetCtx.fillText(state.agent.cargo2.toUpperCase(), startX, cargo2Y);
         }
 
