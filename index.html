@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C21 Signature Generator - Premium Email Banner Generator</title>
+    <!-- Google Fonts: Barlow (all weights) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Panel / Form -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="brand">
+                    <i class="fa-solid fa-signature brand-icon"></i>
+                    <div>
+                        <h1>C21 Signature</h1>
+                        <p>Email Banner Generator</p>
+                    </div>
+                </div>
+            </div>
+
+            <form id="bannerForm" class="sidebar-form" onsubmit="event.preventDefault();">
+                <!-- Section 1: Template Configuration -->
+                <div class="form-section">
+                    <h2><span class="step-num">1</span>Base Design</h2>
+                    
+                    <div class="control-group">
+                        <label>Template Color</label>
+                        <div class="theme-selector">
+                            <label class="theme-option dark active">
+                                <input type="radio" name="theme" value="dark" checked>
+                                <span class="theme-preview"></span>
+                                <span class="theme-label">Dark</span>
+                            </label>
+                            <label class="theme-option light">
+                                <input type="radio" name="theme" value="light">
+                                <span class="theme-preview"></span>
+                                <span class="theme-label">Light</span>
+                            </label>
+                            <label class="theme-option gold">
+                                <input type="radio" name="theme" value="gold">
+                                <span class="theme-preview"></span>
+                                <span class="theme-label">Gold</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Signature Style</label>
+                        <div class="toggle-selector">
+                            <label class="toggle-option">
+                                <input type="radio" name="hasPhoto" value="true">
+                                <i class="fa-regular fa-image"></i> With Photo
+                            </label>
+                            <label class="toggle-option active">
+                                <input type="radio" name="hasPhoto" value="false" checked>
+                                <i class="fa-solid fa-align-left"></i> No Photo
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Agent Photo -->
+                <div class="form-section hidden" id="photoSection">
+                    <h2><span class="step-num">2</span>Profile Picture</h2>
+                    
+                    <div class="control-group">
+                        <div class="file-uploader">
+                            <input type="file" id="agentPhotoInput" accept="image/*" class="file-input">
+                            <label for="agentPhotoInput" class="file-label">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <span>Upload Agent Photo</span>
+                                <small>Transparent PNG recommended</small>
+                            </label>
+                        </div>
+                        <div id="photoFileName" class="file-name-display hidden">
+                            <i class="fa-regular fa-image"></i> <span class="name-text"></span>
+                            <button type="button" id="removePhotoBtn" class="btn-icon-danger"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="control-group photo-controls hidden" id="photoAdjustmentControls">
+                        <label>Photo Adjustment</label>
+                        
+                        <div class="slider-control">
+                            <div class="slider-label">
+                                <span>Framing</span>
+                                <div class="btn-group-mini">
+                                    <button type="button" class="btn-mini active" data-mask="none">Overlay</button>
+                                    <button type="button" class="btn-mini" data-mask="circle">Circle</button>
+                                    <button type="button" class="btn-mini" data-mask="rect">Card</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="slider-control">
+                            <div class="slider-label"><span>Zoom</span> <span id="valZoom">100%</span></div>
+                            <input type="range" id="sliderZoom" min="10" max="300" value="100">
+                        </div>
+                        <div class="slider-control">
+                            <div class="slider-label"><span>Offset X</span> <span id="valOffsetX">0px</span></div>
+                            <input type="range" id="sliderOffsetX" min="-200" max="200" value="0">
+                        </div>
+                        <div class="slider-control">
+                            <div class="slider-label"><span>Offset Y</span> <span id="valOffsetY">0px</span></div>
+                            <input type="range" id="sliderOffsetY" min="-200" max="200" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Personal Details -->
+                <div class="form-section">
+                    <h2><span class="step-num">3</span>Personal Details</h2>
+                    
+                    <div class="control-group">
+                        <label for="agentName">Full Name</label>
+                        <div class="input-with-icon">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="agentName" placeholder="Agent Name">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="agentCargo">Job Title - Line 1</label>
+                        <div class="input-with-icon">
+                            <i class="fa-regular fa-id-card"></i>
+                            <input type="text" id="agentCargo" placeholder="e.g. Realtor©">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="agentCargo2">Job Title - Line 2</label>
+                        <div class="input-with-icon">
+                            <i class="fa-regular fa-id-card"></i>
+                            <input type="text" id="agentCargo2" placeholder="e.g. COMMERCIAL & RESIDENTIAL REAL ESTATE">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="agentPhone">Phone Number (10 digits)</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-phone"></i>
+                            <input type="tel" id="agentPhone" placeholder="e.g. 4038302728" maxlength="10">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Awards -->
+                <div class="form-section">
+                    <h2><span class="step-num">4</span>Awards</h2>
+                    
+                    <div class="control-group">
+                        <label>Does the agent have awards?</label>
+                        <div class="toggle-selector" id="toggleAwardsPossession">
+                            <label class="toggle-option">
+                                <input type="radio" name="hasAwards" value="true">
+                                <i class="fa-solid fa-trophy"></i> Yes, has awards
+                            </label>
+                            <label class="toggle-option active">
+                                <input type="radio" name="hasAwards" value="false" checked>
+                                <i class="fa-solid fa-ban"></i> No awards
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="awardsSelectionContainer" class="control-group hidden">
+                        <label>Select Awards</label>
+                        <p class="section-help">Select between 1 and 4 awards to display in the banner.</p>
+                        
+                        <div class="awards-checklist" id="awardsChecklist">
+                            <!-- Awards list will be generated here -->
+                        </div>
+                        
+                        <label style="margin-top: 12px;">Upload Custom Award</label>
+                        <div class="file-uploader">
+                            <input type="file" id="customAwardInput" accept="image/*" class="file-input">
+                            <label for="customAwardInput" class="file-label-mini">
+                                <i class="fa-solid fa-plus"></i> Upload Custom Award
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: Social Networks -->
+                <div class="form-section">
+                    <h2><span class="step-num">5</span>Social Networks</h2>
+                    <p class="section-help">Add your profiles. Clickable icons will be added below the signature banner.</p>
+                    
+                    <div class="control-group">
+                        <label for="socialFacebook">Facebook URL</label>
+                        <div class="input-with-icon">
+                            <i class="fa-brands fa-facebook"></i>
+                            <input type="url" id="socialFacebook" placeholder="https://facebook.com/username">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="socialInstagram">Instagram URL</label>
+                        <div class="input-with-icon">
+                            <i class="fa-brands fa-instagram"></i>
+                            <input type="url" id="socialInstagram" placeholder="https://instagram.com/username">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="socialWebsite">Website URL</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-globe"></i>
+                            <input type="url" id="socialWebsite" placeholder="https://www.yourwebsite.com">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </aside>
+
+        <!-- Main Workspace / Preview -->
+        <main class="workspace">
+            <div class="workspace-card">
+                <div class="workspace-header">
+                    <h2>HTML Signature Preview</h2>
+                    <div class="badges">
+                        <span class="badge badge-resolution">1024 x 265 px</span>
+                        <span class="badge badge-retina"><i class="fa-solid fa-bolt"></i> HD Enabled</span>
+                    </div>
+                </div>
+
+                <!-- Preview container -->
+                <div class="canvas-container">
+                    <div class="signature-rich-preview">
+                        <!-- Preview of social icons under HTML banner -->
+                        <div id="socialIconsPreview" class="social-icons-preview">
+                            <!-- Filled dynamically with active social profiles -->
+                        </div>
+
+                        <!-- Actual rendering canvas -->
+                        <canvas id="bannerCanvas" width="1024" height="265"></canvas>
+                    </div>
+                </div>
+
+                <!-- Primary Actions -->
+                <div class="preview-actions">
+                    <button type="button" id="btnCopySignature" class="btn-primary">
+                        <i class="fa-solid fa-copy"></i> Copy HTML Signature
+                    </button>
+                    <button type="button" id="btnDownload" class="btn-secondary">
+                        <i class="fa-solid fa-download"></i> Download Banner Image
+                    </button>
+                </div>
+
+
+
+                <div class="info-alert">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <div>
+                        <h3>How to install in your email client?</h3>
+                        <p>1. Complete your details and social networks.<br>
+                           2. Click on <strong>Copy HTML Signature</strong>.<br>
+                           3. Go to your email client signature settings (Gmail, Outlook, etc.) and press <strong>Ctrl+V</strong> (paste) in the signature box.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Load app.js -->
+    <script src="app.js"></script>
+</body>
+</html>
