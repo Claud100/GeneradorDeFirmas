@@ -206,15 +206,15 @@ async function loadSocialUrls() {
     try {
         const response = await fetch('/social-urls');
         const data = await response.json();
-        hostedSocialUrls.facebook = data.facebook || (window.location.origin + '/' + customSocialPaths.facebook);
-        hostedSocialUrls.instagram = data.instagram || (window.location.origin + '/' + customSocialPaths.instagram);
-        hostedSocialUrls.website = data.website || (window.location.origin + '/' + customSocialPaths.website);
+        hostedSocialUrls.facebook = data.facebook || new URL(customSocialPaths.facebook, window.location.href).href;
+        hostedSocialUrls.instagram = data.instagram || new URL(customSocialPaths.instagram, window.location.href).href;
+        hostedSocialUrls.website = data.website || new URL(customSocialPaths.website, window.location.href).href;
         console.log("Hosted social URLs loaded successfully from server:", hostedSocialUrls);
     } catch (e) {
         console.error('Failed to load hosted social URLs, using local fallbacks:', e);
-        hostedSocialUrls.facebook = window.location.origin + '/' + customSocialPaths.facebook;
-        hostedSocialUrls.instagram = window.location.origin + '/' + customSocialPaths.instagram;
-        hostedSocialUrls.website = window.location.origin + '/' + customSocialPaths.website;
+        hostedSocialUrls.facebook = new URL(customSocialPaths.facebook, window.location.href).href;
+        hostedSocialUrls.instagram = new URL(customSocialPaths.instagram, window.location.href).href;
+        hostedSocialUrls.website = new URL(customSocialPaths.website, window.location.href).href;
     }
 }
 
@@ -1307,4 +1307,3 @@ async function downloadBannerImage() {
         btn.innerHTML = originalHTML;
     }
 }
-    
