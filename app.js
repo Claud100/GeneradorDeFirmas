@@ -1307,3 +1307,4 @@ async function downloadBannerImage() {
         btn.innerHTML = originalHTML;
     }
 }
+    
