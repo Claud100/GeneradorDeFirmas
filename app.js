@@ -589,12 +589,14 @@ function formatPhoneNumber(rawPhone) {
 
 // Función de Dibujado (Canvas Renderer)
 async function renderCanvas(targetCanvas, scale = 1) {
-    const width = 1024 * scale;
-    const height = 265 * scale;
+    const width = 600 * scale;
+    const height = 148 * scale;
     targetCanvas.width = width;
     targetCanvas.height = height;
     
     const targetCtx = targetCanvas.getContext('2d');
+    targetCtx.save();
+    targetCtx.scale(600 / 1024, 148 / 265);
     
     // Obtener premios activos
     const activeAwards = state.awards.filter(a => a.enabled);
@@ -615,10 +617,10 @@ async function renderCanvas(targetCanvas, scale = 1) {
     }
     
     if (bgImg) {
-        targetCtx.drawImage(bgImg, 0, 0, width, height);
+        targetCtx.drawImage(bgImg, 0, 0, 1024 * scale, 265 * scale);
     } else {
         targetCtx.fillStyle = state.theme === 'dark' ? '#252526' : (state.theme === 'gold' ? '#BEAF87' : '#FFFFFF');
-        targetCtx.fillRect(0, 0, width, height);
+        targetCtx.fillRect(0, 0, 1024 * scale, 265 * scale);
     }
 
     // 2. Dibujar Foto del Agente (si aplica)
@@ -928,6 +930,7 @@ async function renderCanvas(targetCanvas, scale = 1) {
             await drawAwardCentered(targetCtx, activeAwards[3], col2Center, row2Y, 135 * scale, 120 * scale);
         }
     }
+    targetCtx.restore();
 }
 
 // Cargar de forma asíncrona un premio con fallback al tema específico si existe en assets/awards/[theme]/
@@ -1027,12 +1030,12 @@ function generateSignatureHtml() {
     
     const name = state.agent.name || 'Agente';
     
-    let html = `<table cellpadding="0" cellspacing="0" style="font-family: 'Barlow', Arial, sans-serif; border-collapse: collapse; text-align: left; width: 1024px; max-width: 100%;">\n`;
+    let html = `<table cellpadding="0" cellspacing="0" style="font-family: 'Barlow', Arial, sans-serif; border-collapse: collapse; text-align: left; width: 600px; max-width: 100%;">\n`;
     
     // Fila 1: Banner de Imagen
     html += `  <tr>\n`;
     html += `    <td style="padding: 0; margin: 0; border: 0; line-height: 0;">\n`;
-    html += `      <img src="${bannerSrc}" width="1024" height="265" style="display: block; width: 1024px; height: auto; max-width: 100%; border: 0;" alt="${name} - Century 21"/>\n`;
+    html += `      <img src="${bannerSrc}" width="600" height="148" style="display: block; width: 600px; height: auto; max-width: 100%; border: 0;" alt="${name} - Century 21"/>\n`;
     html += `    </td>\n`;
     html += `  </tr>\n`;
 
