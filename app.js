@@ -741,87 +741,87 @@ async function renderCanvas(targetCanvas, scale = 1) {
     if (nameLines.length === 1) {
         if (hasAwardsLayout) {
             // Shift text upward to make room for the Century 21 logo at the bottom left
-            const nameY = hasCargo2 ? (70 * scale) : (75 * scale);
-            targetCtx.font = `800 ${44 * scale}px Barlow`;
+            const nameY = hasCargo2 ? (66 * scale) : (70 * scale);
+            targetCtx.font = `800 ${45 * scale}px Barlow`;
             targetCtx.fillText(nameLines[0], startX, nameY);
 
             // B. Dibujar Cargo
-            const cargo1Y = hasCargo2 ? (102 * scale) : (115 * scale);
+            const cargo1Y = hasCargo2 ? (92 * scale) : (100 * scale);
             targetCtx.fillStyle = colorCargo;
-            targetCtx.font = `700 ${17 * scale}px Barlow`;
+            targetCtx.font = `700 ${18 * scale}px Barlow`;
             targetCtx.fillText((state.agent.cargo || '').toUpperCase(), startX, cargo1Y);
 
             if (hasCargo2) {
-                const cargo2Y = 122 * scale;
-                targetCtx.font = `500 ${13 * scale}px Barlow`;
+                const cargo2Y = 112 * scale;
+                targetCtx.font = `500 ${18 * scale}px Barlow`;
                 targetCtx.fillText(state.agent.cargo2.toUpperCase(), startX, cargo2Y);
             }
 
             // C. Dibujar Teléfono
-            const phoneY = hasCargo2 ? (152 * scale) : (148 * scale);
+            const phoneY = hasCargo2 ? (136 * scale) : (130 * scale);
             targetCtx.fillStyle = colorContact;
-            targetCtx.font = `500 ${19 * scale}px Barlow`;
+            targetCtx.font = `500 ${20 * scale}px Barlow`;
             targetCtx.fillText(formatPhoneNumber(state.agent.phone || ''), startX, phoneY);
 
             // D. Dibujar Dirección de Oficina
-            const addressY = hasCargo2 ? (178 * scale) : (178 * scale);
+            const addressY = hasCargo2 ? (160 * scale) : (160 * scale);
             targetCtx.fillText(state.agent.address || '', startX, addressY);
         } else {
             // Standard layout when there are no awards (logo is on the right)
-            const nameY = hasCargo2 ? (102 * scale) : (112 * scale);
-            targetCtx.font = `800 ${54 * scale}px Barlow`;
+            const nameY = hasCargo2 ? (96 * scale) : (106 * scale);
+            targetCtx.font = `800 ${55 * scale}px Barlow`;
             targetCtx.fillText(nameLines[0], startX, nameY);
 
             // B. Dibujar Cargo
-            const cargo1Y = hasCargo2 ? (142 * scale) : (153 * scale);
+            const cargo1Y = hasCargo2 ? (130 * scale) : (142 * scale);
             targetCtx.fillStyle = colorCargo;
-            targetCtx.font = `700 ${19 * scale}px Barlow`;
+            targetCtx.font = `700 ${20 * scale}px Barlow`;
             targetCtx.fillText((state.agent.cargo || '').toUpperCase(), startX, cargo1Y);
 
             if (hasCargo2) {
-                const cargo2Y = 162 * scale;
-                targetCtx.font = `500 ${13 * scale}px Barlow`;
+                const cargo2Y = 152 * scale;
+                targetCtx.font = `500 ${20 * scale}px Barlow`;
                 targetCtx.fillText(state.agent.cargo2.toUpperCase(), startX, cargo2Y);
             }
 
             // C. Dibujar Teléfono
-            const phoneY = hasCargo2 ? (196 * scale) : (193 * scale);
+            const phoneY = hasCargo2 ? (182 * scale) : (176 * scale);
             targetCtx.fillStyle = colorContact;
-            targetCtx.font = `500 ${19 * scale}px Barlow`;
+            targetCtx.font = `500 ${20 * scale}px Barlow`;
             targetCtx.fillText(formatPhoneNumber(state.agent.phone || ''), startX, phoneY);
 
             // D. Dibujar Dirección de Oficina
-            const addressY = hasCargo2 ? (230 * scale) : (231 * scale);
+            const addressY = hasCargo2 ? (212 * scale) : (210 * scale);
             targetCtx.fillText(state.agent.address || '', startX, addressY);
         }
     } else {
-        const name1Y = hasCargo2 ? (50 * scale) : (56 * scale);
-        const name2Y = hasCargo2 ? (80 * scale) : (90 * scale);
+        const name1Y = hasCargo2 ? (46 * scale) : (52 * scale);
+        const name2Y = hasCargo2 ? (74 * scale) : (84 * scale);
         
-        targetCtx.font = `800 ${32 * scale}px Barlow`;
+        targetCtx.font = `800 ${33 * scale}px Barlow`;
         targetCtx.fillText(nameLines[0], startX, name1Y);
         targetCtx.fillText(nameLines[1], startX, name2Y);
 
         // B. Dibujar Cargo
-        const cargo1Y = hasCargo2 ? (106 * scale) : (118 * scale);
+        const cargo1Y = hasCargo2 ? (98 * scale) : (110 * scale);
         targetCtx.fillStyle = colorCargo;
-        targetCtx.font = `700 ${17 * scale}px Barlow`;
+        targetCtx.font = `700 ${18 * scale}px Barlow`;
         targetCtx.fillText((state.agent.cargo || '').toUpperCase(), startX, cargo1Y);
 
         if (hasCargo2) {
-            const cargo2Y = 122 * scale;
-            targetCtx.font = `500 ${13 * scale}px Barlow`;
+            const cargo2Y = 118 * scale;
+            targetCtx.font = `500 ${18 * scale}px Barlow`;
             targetCtx.fillText(state.agent.cargo2.toUpperCase(), startX, cargo2Y);
         }
 
         // C. Dibujar Teléfono
-        const phoneY = hasCargo2 ? (146 * scale) : (139 * scale);
+        const phoneY = hasCargo2 ? (140 * scale) : (132 * scale);
         targetCtx.fillStyle = colorContact;
-        targetCtx.font = `500 ${19 * scale}px Barlow`;
+        targetCtx.font = `500 ${20 * scale}px Barlow`;
         targetCtx.fillText(formatPhoneNumber(state.agent.phone || ''), startX, phoneY);
 
         // D. Dibujar Dirección de Oficina
-        const addressY = hasCargo2 ? (166 * scale) : (159 * scale);
+        const addressY = hasCargo2 ? (162 * scale) : (154 * scale);
         targetCtx.fillText(state.agent.address || '', startX, addressY);
     }
 
